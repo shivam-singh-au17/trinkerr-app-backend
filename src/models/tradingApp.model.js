@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-let appDataSchema = new Schema(
+let tradingAppSchema = new Schema(
     {
         stockName: { type: String },
         stockPrise: { type: Number },
@@ -10,7 +10,7 @@ let appDataSchema = new Schema(
     { timestamps: true, versionKey: false }
 );
 
-let AppData = mongoose.model("AppData", appDataSchema);
+let TradingApp = mongoose.model("tradingApp", tradingAppSchema);
 
-module.exports = AppData;
+module.exports = TradingApp;
 

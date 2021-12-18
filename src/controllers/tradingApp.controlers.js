@@ -1,14 +1,14 @@
 const express = require("express");
-const WatchList = require("../models/watchLiist.model");
+const TradingApp = require("../models/tradingApp.model");
 const router = express.Router();
 
-router.post("/watchList", async (req, res) => {
+router.post("/tradingApp", async (req, res) => {
     try {
-        let watchList = new WatchList(req.body);
-        watchList = await watchList.save();
+        let tradingApp = new TradingApp(req.body);
+        tradingApp = await tradingApp.save();
         res.status(200).json({
             status: 200,
-            data: watchList,
+            data: tradingApp,
         });
     } catch (err) {
         res.status(400).json({
@@ -18,9 +18,9 @@ router.post("/watchList", async (req, res) => {
     }
 });
 
-router.get("/watchList", async (req, res) => {
+router.get("/tradingApp", async (req, res) => {
     try {
-        let users = await WatchList.find();
+        let users = await TradingApp.find();
         res.status(200).json({
             status: 200,
             data: users,
@@ -33,20 +33,20 @@ router.get("/watchList", async (req, res) => {
     }
 });
 
-router.get("/watchList/:watchListId", async (req, res) => {
+router.get("/tradingApp/:tradingAppId", async (req, res) => {
     try {
-        let watchList = await WatchList.findOne({
-            _id: req.params.watchListId,
+        let tradingApp = await TradingApp.findOne({
+            _id: req.params.tradingAppId,
         });
-        if (watchList) {
+        if (tradingApp) {
             res.status(200).json({
                 status: 200,
-                data: watchList,
+                data: tradingApp,
             });
         }
         res.status(400).json({
             status: 400,
-            message: "No watchList found",
+            message: "No tradingApp found",
         });
     } catch (err) {
         res.status(400).json({
@@ -56,20 +56,20 @@ router.get("/watchList/:watchListId", async (req, res) => {
     }
 });
 
-router.put("/watchList/:watchListId", async (req, res) => {
+router.put("/tradingApp/:tradingAppId", async (req, res) => {
     try {
-        let watchList = await WatchList.findByIdAndUpdate(req.params.watchListId, req.body, {
+        let tradingApp = await TradingApp.findByIdAndUpdate(req.params.tradingAppId, req.body, {
             new: true,
         });
-        if (watchList) {
+        if (tradingApp) {
             res.status(200).json({
                 status: 200,
-                data: watchList,
+                data: tradingApp,
             });
         }
         res.status(400).json({
             status: 400,
-            message: "No watchList found",
+            message: "No tradingApp found",
         });
     } catch (err) {
         res.status(400).json({
@@ -79,18 +79,18 @@ router.put("/watchList/:watchListId", async (req, res) => {
     }
 });
 
-router.delete("/watchList/:watchListId", async (req, res) => {
+router.delete("/tradingApp/:tradingAppId", async (req, res) => {
     try {
-        let watchList = await WatchList.findByIdAndRemove(req.params.watchListId);
-        if (watchList) {
+        let tradingApp = await TradingApp.findByIdAndRemove(req.params.tradingAppId);
+        if (tradingApp) {
             res.status(200).json({
                 status: 200,
-                message: "WatchList deleted successfully",
+                message: "TradingApp deleted successfully",
             });
         } else {
             res.status(400).json({
                 status: 400,
-                message: "No watchList found",
+                message: "No tradingApp found",
             });
         }
     } catch (err) {
@@ -102,4 +102,3 @@ router.delete("/watchList/:watchListId", async (req, res) => {
 });
 
 module.exports = router;
-
