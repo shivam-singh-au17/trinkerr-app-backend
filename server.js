@@ -13,8 +13,8 @@ const watchListController = require("./src/controllers/watchLiist.controllers");
 app.use(cors());
 app.use(express.json());
 
-app.use(appDataController);
-app.use(watchListController);
+app.use("/", appDataController);
+app.use("/", watchListController);
 
 app.listen(port, async () => {
   await connect();
