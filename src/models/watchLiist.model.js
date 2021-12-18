@@ -10,7 +10,7 @@ let watchListDataSchema = new Schema(
     { timestamps: true, versionKey: false }
 );
 
-let watchListData = mongoose.model("watchListData", watchListDataSchema);
+let WatchListData = mongoose.model("watchListData", watchListDataSchema);
 
-module.exports = watchListData;
+module.exports = WatchListData;
 

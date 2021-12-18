@@ -1,10 +1,10 @@
 const express = require("express");
-const watchListData = require("../models/watchLiist.model");
+const WatchListData = require("../models/watchLiist.model");
 const router = express.Router();
 
 router.post("/watchListData", async (req, res) => {
     try {
-        let watchListData = new watchListData(req.body);
+        let watchListData = new WatchListData(req.body);
         watchListData = await watchListData.save();
         res.status(200).json({
             status: 200,
@@ -20,7 +20,7 @@ router.post("/watchListData", async (req, res) => {
 
 router.get("/watchListData", async (req, res) => {
     try {
-        let users = await watchListData.find();
+        let users = await WatchListData.find();
         res.status(200).json({
             status: 200,
             data: users,
@@ -33,9 +33,9 @@ router.get("/watchListData", async (req, res) => {
     }
 });
 
-router.get("/:watchListDataId", async (req, res) => {
+router.get("/watchListData/:watchListDataId", async (req, res) => {
     try {
-        let watchListData = await watchListData.findOne({
+        let watchListData = await WatchListData.findOne({
             _id: req.params.watchListDataId,
         });
         if (watchListData) {
@@ -56,9 +56,9 @@ router.get("/:watchListDataId", async (req, res) => {
     }
 });
 
-router.put("/:watchListDataId", async (req, res) => {
+router.put("/watchListData/:watchListDataId", async (req, res) => {
     try {
-        let watchListData = await watchListData.findByIdAndUpdate(req.params.watchListDataId, req.body, {
+        let watchListData = await WatchListData.findByIdAndUpdate(req.params.watchListDataId, req.body, {
             new: true,
         });
         if (watchListData) {
@@ -79,13 +79,13 @@ router.put("/:watchListDataId", async (req, res) => {
     }
 });
 
-router.delete("/:watchListDataId", async (req, res) => {
+router.delete("/watchListData/:watchListDataId", async (req, res) => {
     try {
-        let watchListData = await watchListData.findByIdAndRemove(req.params.watchListDataId);
+        let watchListData = await WatchListData.findByIdAndRemove(req.params.watchListDataId);
         if (watchListData) {
             res.status(200).json({
                 status: 200,
-                message: "watch List Data deleted successfully",
+                message: "Watch List Data deleted successfully",
             });
         } else {
             res.status(400).json({

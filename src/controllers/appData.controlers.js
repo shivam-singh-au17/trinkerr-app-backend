@@ -33,7 +33,7 @@ router.get( "/appData", async ( req, res ) => {
     }
 } );
 
-router.get( "/:appDataId", async ( req, res ) => {
+router.get( "/appData/:appDataId", async ( req, res ) => {
     try {
         let appData = await AppData.findOne( {
             _id: req.params.appDataId,
@@ -56,7 +56,7 @@ router.get( "/:appDataId", async ( req, res ) => {
     }
 } );
 
-router.put( "/:appDataId", async ( req, res ) => {
+router.put( "/appData/:appDataId", async ( req, res ) => {
     try {
         let appData = await AppData.findByIdAndUpdate( req.params.appDataId, req.body, {
             new: true,
@@ -79,7 +79,7 @@ router.put( "/:appDataId", async ( req, res ) => {
     }
 } );
 
-router.delete( "/:appDataId", async ( req, res ) => {
+router.delete( "/appData/:appDataId", async ( req, res ) => {
     try {
         let appData = await AppData.findByIdAndRemove( req.params.appDataId );
         if ( appData ) {
