@@ -1,3 +1,4 @@
+
 const express = require("express");
 const TradingApp = require("../models/tradingApp.model");
 const router = express.Router();
